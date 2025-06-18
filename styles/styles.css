@@ -3,6 +3,12 @@
     padding: 0;
 }
 
+body {
+    background-image: url('../images/background.png');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
 nav ul {
     list-style-type: none;
     padding: 0;
@@ -102,12 +108,17 @@ main {
 }
 
 .sinopsis {
+    padding: 0 3rem;
     margin-top: 10px;
     color: #666;
     text-align: justify;
 }
 
+.sinopsis p{
+    padding-bottom: .5rem;
+}
+
 a {
-    color: #007bff;
+    color: #ff6060;
     text-decoration: none;
 }
