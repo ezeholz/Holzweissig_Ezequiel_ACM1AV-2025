@@ -27,6 +27,51 @@ nav {
     left: 0;
 }
 
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 15px;
+    background: #00000057;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    width: 55px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 2px 0;
+    transition: 0.3s;
+    display: block;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+.menu-toggle:checked + .hamburger span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 5px);
+}
+
+.menu-toggle:checked + .hamburger span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle:checked + .hamburger span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -5px);
+}
+
+.menu-toggle:checked ~ ul {
+    left: 0;
+}
+
 nav ul {
     list-style-type: none;
     padding: 0;
@@ -98,6 +143,11 @@ form div {
     width: 100%;
     display: flex;
     flex-direction: column;
+}
+
+.poster {
+    max-width: 300px;
+    padding-bottom: 20px;
 }
 
 .charactersList {
@@ -222,4 +272,303 @@ a {
 .redes img {
     width: 40px;
     height: 40px;
+}
+
+/* RESPONSIVE DESIGN FOR MOBILE */
+@media (max-width: 768px) {
+    /* Show hamburger menu on mobile */
+    .hamburger {
+        display: flex;
+    }
+
+    /* Hide navigation menu by default on mobile */
+    nav ul {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.95);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        transition: left 0.3s ease;
+        font-size: 18px;
+    }
+
+    /* Show navigation when active */
+    nav ul.active {
+        left: 0;
+    }
+
+    nav ul li {
+        padding: 1rem;
+    }
+
+    nav ul li::before {
+        margin-right: 1rem;
+    }
+
+    /* Main content adjustments */
+    main {
+        margin: 10px;
+        padding: 15px;
+        max-width: calc(100% - 20px);
+        font-size: 14px;
+    }
+
+    /* Images in main content */
+    main img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Form adjustments */
+    form {
+        width: 100%;
+    }
+
+    form div {
+        padding-bottom: 10px;
+    }
+
+    form input,
+    form textarea {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    form button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    /* Characters list - single column on mobile */
+    .charactersList {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .character {
+        width: 100%;
+        max-width: 300px;
+        padding: 15px;
+    }
+
+    .character p {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    /* Episodes list adjustments */
+    .episodesList {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .episodesList li {
+        width: 100%;
+        height: auto;
+        min-height: 200px;
+        padding: 15px;
+    }
+
+    .episodesList li * {
+        position: relative;
+        height: auto;
+    }
+
+    .episodesList li .content {
+        top: 0;
+        padding: 0;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .episodesList li img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+    }
+
+    .episodesList li:hover img {
+        height: 150px;
+        border-radius: 8px;
+    }
+
+    /* Typography adjustments */
+    h1 {
+        font-size: 1.8rem;
+        padding-bottom: 1rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        margin: 15px 0;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+    }
+
+    /* Sinopsis adjustments */
+    .sinopsis {
+        padding: 0 1rem;
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .sinopsis p {
+        padding-bottom: 0.3rem;
+    }
+
+    /* Social media icons */
+    .redes {
+        gap: 20px;
+        padding: 15px 0 0;
+    }
+
+    .redes img {
+        width: 35px;
+        height: 35px;
+    }
+
+    /* Season container adjustments */
+    .seasonContainer {
+        padding: 10px;
+    }
+
+    /* Prevent horizontal scrolling */
+    body {
+        overflow-x: hidden;
+    }
+
+    /* Adjust background for mobile */
+    body {
+        background-attachment: scroll;
+    }
+
+    /* Additional responsive styles for iframe and videos */
+    iframe {
+        width: 100%;
+        height: 200px;
+        margin: 10px 0;
+    }
+
+    /* Close menu when clicking on a link */
+    nav ul li a {
+        display: block;
+        width: 100%;
+        padding: 1rem;
+        text-align: center;
+    }
+
+    /* Ensure menu closes when clicking outside */
+    nav ul li a:focus {
+        outline: none;
+    }
+
+    /* Style adjustments for form elements */
+    form label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        text-align: left;
+    }
+
+    form input,
+    form textarea {
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 8px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    form button {
+        background-color: #ff6060;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    form button:hover {
+        background-color: #e55555;
+    }
+}
+
+/* Additional breakpoint for very small screens */
+@media (max-width: 480px) {
+    main {
+        margin: 5px;
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    h3 {
+        font-size: 1.1rem;
+    }
+
+    .character {
+        padding: 10px;
+    }
+
+    .episodesList {
+        padding: 10px;
+    }
+
+    .episodesList li {
+        padding: 10px;
+        min-height: 180px;
+    }
+
+    .episodesList li img {
+        height: 120px;
+    }
+
+    .episodesList li:hover img {
+        height: 120px;
+    }
+
+    .sinopsis {
+        padding: 0 0.5rem;
+        font-size: 13px;
+    }
+
+    nav ul {
+        font-size: 16px;
+    }
+
+    .redes img {
+        width: 30px;
+        height: 30px;
+    }
+
+    /* Additional styles for very small screens */
+    iframe {
+        height: 180px;
+    }
+
+    form input,
+    form textarea {
+        font-size: 13px;
+        padding: 6px;
+    }
+
+    form button {
+        font-size: 13px;
+        padding: 8px 16px;
+    }
 }
